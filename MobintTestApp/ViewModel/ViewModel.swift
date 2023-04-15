@@ -14,12 +14,11 @@ class ViewModel: ObservableObject {
     @Published var items: [Item] = []
     @Published var isLoading: Bool = false
     var offset: Int = 0
-    @Published var error: NetworkError?
+//@Published var alertType: AlertType?
     
-    func loadData(offset: Int) {
+    func loadData(offset: Int, completion: @escaping (NetworkError?) -> Void) {
         
         guard !isLoading else { return }
-        
         isLoading = true
         
         Task {
@@ -33,7 +32,7 @@ class ViewModel: ObservableObject {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.error = error
+                    completion(error)
                     self.isLoading = false
                 }
             }
@@ -41,16 +40,15 @@ class ViewModel: ObservableObject {
     }
     
     
-    func loadMoreDataIfNeeded(currentItem item: Item?) {
+    func loadMoreDataIfNeeded(currentItem item: Item?, completion: @escaping (NetworkError?) -> Void) {
         
         guard !isLoading else { return }
-        
-        
         guard let item = item else { return }
+        
         let isLastItem = items.lastIndex(where: { $0.company.companyId == item.company.companyId }) == items.count.advanced(by: -1)
         
         if isLastItem {
-            Task.init {
+            Task {
                 DispatchQueue.main.async { [weak self] in
                     self?.isLoading = true
                 }
@@ -64,7 +62,7 @@ class ViewModel: ObservableObject {
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
-                        self.error = error
+                        completion(error)
                         self.isLoading = false
                     }
                 }

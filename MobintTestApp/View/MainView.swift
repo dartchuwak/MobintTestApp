@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @ObservedObject var viewModel = ViewModel()
+    @State private var alertType: AlertType?
     
     var body: some View {
         GeometryReader { geo in
@@ -27,11 +28,17 @@ struct MainView: View {
                     ScrollView {
                         LazyVStack(spacing: 0) {
                             ForEach(viewModel.items, id: \.self) { item in
-                                Cell(cellViewModel: CellViewModel(item: item))
+                                Cell(cellViewModel: CellViewModel(item: item), onTap: { alert in
+                                    self.alertType = .selectedItem(alert)
+                                })
                                     .cornerRadius(15)
                                     .padding(EdgeInsets(top: 16, leading: 16, bottom: 0, trailing: 16))
                                     .onAppear {
-                                        viewModel.loadMoreDataIfNeeded(currentItem: item)
+                                        viewModel.loadMoreDataIfNeeded(currentItem: item) { error in
+                                            if let error = error {
+                                                self.alertType = .error(error)
+                                            }
+                                        }
                                     }
                             }
                         }
@@ -55,16 +62,30 @@ struct MainView: View {
                 }
             }
             .background(Color("lightGrey"))
-            .alert(item: $viewModel.error) { error in
-                Alert(
-                    title: Text("Ошибка"),
-                    message: Text(error.rawValue),
-                    dismissButton: .default(Text("OK"))
-                )
+            .alert(item: $alertType) { alertType in
+                switch alertType {
+                case .error(let error):
+                    return Alert(
+                        title: Text("Ошибка"),
+                        message: Text(error.rawValue),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .selectedItem(let alert):
+                    return Alert(
+                        title: Text(alert.title),
+                        message: Text(alert.message),
+                        dismissButton: .default(Text("OK")) {
+                            self.alertType = nil
+                        }
+                    )
+                }
             }
-        
             .onAppear {
-                viewModel.loadData(offset: 0)
+                viewModel.loadData(offset: 0) { error in
+                    if let error = error {
+                        self.alertType = .error(error)
+                    }
+                }
             }
         }
     }
@@ -76,7 +97,9 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .onAppear{
-                viewModel.loadData(offset: 0)
+                viewModel.loadData(offset: 0) { error in
+                    
+                }
             }
     }
 }

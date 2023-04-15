@@ -11,7 +11,7 @@ import Foundation
 class NetworkService {
     
     func fetchData(offset: Int) async -> Result<[Item], NetworkError> {
-        guard let url = URL(string: "http://dev.bonusmoney.pro/mobileapp/getAllCompaniesIdeal") else { return .failure(.invalidURL)}
+        guard let url = URL(string: "http://dev.bonusmoney.pro/mobileapp/getAllCompanies") else { return .failure(.invalidURL)}
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -54,7 +54,7 @@ class NetworkService {
 
 enum NetworkError:String, Error, Identifiable {
     case encodingError
-    case invalidURL
+    case invalidURL = "Неверный URL"
     case emptyResponse
     case serverError = "Все упало"
     case unauthorized = "Ошибка авторизации"
