@@ -53,8 +53,10 @@ struct MainView: View {
                     
                 }
                 else {
-                    VStack {
+                    VStack(spacing: 0) {
                         ProgressView()
+                            .frame(width: 50)
+                            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
                         Text("Подгрузка компаний...")
                         Spacer()
                     }
