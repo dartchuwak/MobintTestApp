@@ -11,7 +11,10 @@ import SwiftUI
 struct MobintTestAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+       
+                MainView()
+            
+            
         }
     }
 }
