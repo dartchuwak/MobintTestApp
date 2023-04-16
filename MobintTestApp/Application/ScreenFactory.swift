@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 let screenFactory = ScreenFactory()
 
 final class ScreenFactory {
