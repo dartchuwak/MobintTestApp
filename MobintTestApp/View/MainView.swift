@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @ObservedObject var viewModel = ViewModel()
+    @ObservedObject var viewModel: MainViewModel
     @State private var alertType: AlertType?
     
     var body: some View {
@@ -95,9 +95,9 @@ struct MainView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    static let viewModel = ViewModel()
+    static let viewModel = MainViewModel(networkService: NetworkService())
     static var previews: some View {
-        MainView()
+        MainView(viewModel: viewModel)
             .onAppear{
                 viewModel.loadData(offset: 0) { error in
                     

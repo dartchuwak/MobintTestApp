@@ -14,11 +14,13 @@
 		A33D069629E9D12C00053F73 /* TaskForAppleAppDelelopers.postman_collection.json in Resources */ = {isa = PBXBuildFile; fileRef = A33D069529E9D12C00053F73 /* TaskForAppleAppDelelopers.postman_collection.json */; };
 		A33D069929E9D28F00053F73 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D069829E9D28F00053F73 /* Company.swift */; };
 		A33D069C29E9D2E000053F73 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D069B29E9D2E000053F73 /* NetworkService.swift */; };
-		A33D069F29E9D72000053F73 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D069E29E9D72000053F73 /* ViewModel.swift */; };
+		A33D069F29E9D72000053F73 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D069E29E9D72000053F73 /* MainViewModel.swift */; };
 		A33D06A329E9E17600053F73 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D06A229E9E17600053F73 /* Cell.swift */; };
 		A33D06A629EAB6AD00053F73 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33D06A529EAB6AD00053F73 /* Color.swift */; };
 		A3C7F02029EB180B00217B14 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F01F29EB180B00217B14 /* CellViewModel.swift */; };
 		A3C7F02229EB275300217B14 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F02129EB275300217B14 /* Alert.swift */; };
+		A3C7F02529EBFDD100217B14 /* ApplicationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F02429EBFDD100217B14 /* ApplicationFactory.swift */; };
+		A3C7F02729EBFE5100217B14 /* ScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C7F02629EBFE5100217B14 /* ScreenFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +32,14 @@
 		A33D069529E9D12C00053F73 /* TaskForAppleAppDelelopers.postman_collection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TaskForAppleAppDelelopers.postman_collection.json; sourceTree = "<group>"; };
 		A33D069829E9D28F00053F73 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		A33D069B29E9D2E000053F73 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		A33D069E29E9D72000053F73 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A33D069E29E9D72000053F73 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		A33D06A029E9D9A600053F73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A33D06A229E9E17600053F73 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		A33D06A529EAB6AD00053F73 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A3C7F01F29EB180B00217B14 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		A3C7F02129EB275300217B14 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A3C7F02429EBFDD100217B14 /* ApplicationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationFactory.swift; sourceTree = "<group>"; };
+		A3C7F02629EBFE5100217B14 /* ScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,13 +72,13 @@
 		A33D068629E9D05000053F73 /* MobintTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				A3C7F02329EBFDBA00217B14 /* Application */,
 				A33D06A429EAB6A400053F73 /* Helpers */,
 				A33D06A129E9E13D00053F73 /* View */,
 				A33D06A029E9D9A600053F73 /* Info.plist */,
 				A33D069D29E9D70F00053F73 /* ViewModel */,
 				A33D069A29E9D2C900053F73 /* Services */,
 				A33D069729E9D27C00053F73 /* Model */,
-				A33D068729E9D05000053F73 /* MobintTestAppApp.swift */,
 				A33D068B29E9D05100053F73 /* Assets.xcassets */,
 				A33D068D29E9D05100053F73 /* Preview Content */,
 			);
@@ -109,7 +113,7 @@
 		A33D069D29E9D70F00053F73 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A33D069E29E9D72000053F73 /* ViewModel.swift */,
+				A33D069E29E9D72000053F73 /* MainViewModel.swift */,
 				A3C7F01F29EB180B00217B14 /* CellViewModel.swift */,
 			);
 			path = ViewModel;
@@ -131,6 +135,16 @@
 				A3C7F02129EB275300217B14 /* Alert.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A3C7F02329EBFDBA00217B14 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A33D068729E9D05000053F73 /* MobintTestAppApp.swift */,
+				A3C7F02429EBFDD100217B14 /* ApplicationFactory.swift */,
+				A3C7F02629EBFE5100217B14 /* ScreenFactory.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,14 +219,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3C7F02229EB275300217B14 /* Alert.swift in Sources */,
-				A33D069F29E9D72000053F73 /* ViewModel.swift in Sources */,
+				A33D069F29E9D72000053F73 /* MainViewModel.swift in Sources */,
 				A33D068A29E9D05000053F73 /* MainView.swift in Sources */,
+				A3C7F02729EBFE5100217B14 /* ScreenFactory.swift in Sources */,
 				A3C7F02029EB180B00217B14 /* CellViewModel.swift in Sources */,
 				A33D06A629EAB6AD00053F73 /* Color.swift in Sources */,
 				A33D068829E9D05000053F73 /* MobintTestAppApp.swift in Sources */,
 				A33D069C29E9D2E000053F73 /* NetworkService.swift in Sources */,
 				A33D069929E9D28F00053F73 /* Company.swift in Sources */,
 				A33D06A329E9E17600053F73 /* Cell.swift in Sources */,
+				A3C7F02529EBFDD100217B14 /* ApplicationFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

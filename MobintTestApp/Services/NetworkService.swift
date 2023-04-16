@@ -7,8 +7,11 @@
 
 import Foundation
 
+protocol NetworkServiceProtocol {
+    func fetchData(offset: Int) async -> Result<[Item], NetworkError>
+}
 
-class NetworkService {
+class NetworkService: NetworkServiceProtocol {
     
     func fetchData(offset: Int) async -> Result<[Item], NetworkError> {
         guard let url = URL(string: "http://dev.bonusmoney.pro/mobileapp/getAllCompanies") else { return .failure(.invalidURL)}

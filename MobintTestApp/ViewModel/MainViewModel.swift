@@ -9,12 +9,24 @@ import Foundation
 
 
 
-class ViewModel: ObservableObject {
-    var networkService = NetworkService()
+protocol MainViewModelProtocol {
+    var networkService: NetworkServiceProtocol { get set }
+    var items: [Item] { get }
+    var isLoading: Bool { get }
+    func loadData(offset: Int, completion: @escaping (NetworkError?) -> Void)
+    func loadMoreDataIfNeeded(currentItem item: Item?, completion: @escaping (NetworkError?) -> Void)
+}
+
+final class MainViewModel: ObservableObject, MainViewModelProtocol {
+    
+    var networkService: NetworkServiceProtocol
     @Published var items: [Item] = []
     @Published var isLoading: Bool = false
     var offset: Int = 0
-//@Published var alertType: AlertType?
+    
+    init(networkService: NetworkServiceProtocol) {
+        self.networkService = networkService
+    }
     
     func loadData(offset: Int, completion: @escaping (NetworkError?) -> Void) {
         
