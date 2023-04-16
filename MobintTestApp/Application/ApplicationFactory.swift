@@ -11,7 +11,6 @@ final class ApplicationFactory {
     
     
     let networkService: NetworkServiceProtocol
-    
     var mainViewModel: MainViewModelProtocol {
         return MainViewModel(networkService: networkService)
     }
